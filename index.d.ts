@@ -54,16 +54,19 @@ declare class SplitPane extends React.Component<Props, State> {
 
 export { SplitPane as default };
 
-interface PaneProps {
-  children?: React.ReactNode;
-  innerRef?: (index: number, element: any) => void;
-  index?: number;
-  className?: string;
-  initialSize?: string | number;
-  minSize?: string;
-  maxSize?: string;
+declare module '@0kzh/react-split-pane/lib/Pane' {
+  import * as React from 'react';
+  interface PaneProps {
+    children?: React.ReactNode;
+    innerRef?: (index: number, element: any) => void;
+    index?: number;
+    className?: string;
+    initialSize?: string | number;
+    minSize?: string;
+    maxSize?: string;
+  }
+
+  class Pane extends React.PureComponent<PaneProps> {}
+
+  export { Pane };
 }
-
-declare class Pane extends React.PureComponent<PaneProps> {}
-
-export { Pane };
