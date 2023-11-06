@@ -2,6 +2,7 @@ import * as Prefixer from 'inline-style-prefixer';
 import * as React from 'react';
 
 export type Size = string | number;
+export type Split = 'vertical' | 'horizontal';
 
 export interface Props {
     allowResize?: boolean;
@@ -25,6 +26,7 @@ export interface Props {
     pane2Style?: React.CSSProperties;
     resizerClassName?: string;
     step?: number;
+    children?: React.ReactNode;
 }
 
 export interface State {
@@ -51,3 +53,17 @@ declare class SplitPane extends React.Component<Props, State> {
 }
 
 export { SplitPane as default };
+
+interface PaneProps {
+  children?: React.ReactNode;
+  innerRef?: (index: number, element: any) => void;
+  index?: number;
+  className?: string;
+  initialSize?: string | number;
+  minSize?: string;
+  maxSize?: string;
+}
+
+declare class Pane extends React.PureComponent<PaneProps> {}
+
+export { Pane };
